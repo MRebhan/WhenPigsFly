@@ -15,7 +15,7 @@ public class ModelEnderPig extends ModelBase {
 	private ModelRenderer wing;
 	/** The wing tip Model renderer of the dragon */
 	private ModelRenderer wingTip;
-	public ModelRenderer head = new ModelRenderer(this, 0, 0);
+	public ModelRenderer head;
 	public ModelRenderer body;
 	public ModelRenderer leg1;
 	public ModelRenderer leg2;
@@ -45,6 +45,7 @@ public class ModelEnderPig extends ModelBase {
 		this.wingTip.addBox("bone", -56.0F, -2.0F, -2.0F, 56, 4, 4);
 		this.wingTip.addBox("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56);
 		this.wing.addChild(this.wingTip);
+		this.head = new ModelRenderer(this, 0, 0);
 		this.head.addBox(-4.0F, -4.0F, -8.0F, 8, 8, 8, p_i1154_2_);
 		this.head.setRotationPoint(0.0F, (float)(18 - p_i1154_1_), -6.0F);
 		this.body = new ModelRenderer(this, 28, 8);
@@ -62,6 +63,7 @@ public class ModelEnderPig extends ModelBase {
 		this.leg4 = new ModelRenderer(this, 0, 16);
 		this.leg4.addBox(-2.0F, 0.0F, -2.0F, 4, p_i1154_1_, 4, p_i1154_2_);
 		this.leg4.setRotationPoint(3.0F, (float)(24 - p_i1154_1_), -5.0F);
+		this.head.setTextureOffset(16, 16).addBox(-2.0F, 0.0F, -9.0F, 4, 3, 1, p_i1154_2_);
 	}
 
 	/**
@@ -95,14 +97,14 @@ public class ModelEnderPig extends ModelBase {
 		float f15;
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0.0F, 1.0F, 0.0F);
-		if (!p_78088_1_.onGround)
+		if (((EntityEnderPig) p_78088_1_).isInAir())
 			GL11.glRotatef(-f12 * f11 * 1.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glTranslatef(0.0F, -1.0F, 0.0F);
 		for (int j = 0; j < 2; ++j)
 		{
 			GL11.glEnable(GL11.GL_CULL_FACE);
 			f15 = f6 * (float)Math.PI * 2.0F;
-			if (p_78088_1_.onGround) {
+			if (!((EntityEnderPig) p_78088_1_).isInAir()) {
 				this.wing.rotateAngleX = 0;
 				this.wing.rotateAngleY = 0;
 				this.wing.rotateAngleZ = 45.5F;
@@ -137,6 +139,11 @@ public class ModelEnderPig extends ModelBase {
 		GL11.glPushMatrix();
 		GL11.glTranslated(0, 0, -1.1);
 		GL11.glRotated(180, 0, 1, 0);
+		if (((EntityEnderPig) p_78088_1_).isInAir()) {
+			GL11.glTranslatef(0.0F, 1.0F, 0.0F);
+			GL11.glRotatef(-f12 * f11 * 1.0F, 0.0F, 0.0F, 1.0F);
+			GL11.glTranslatef(0.0F, -1.0F, 0.0F);
+		}
 		this.setRotationAngles(p_78088_2_, p_78088_3_, p_78088_4_, p_78088_5_, p_78088_6_, p_78088_7_, p_78088_1_);
 
 		this.head.render(p_78088_7_);
