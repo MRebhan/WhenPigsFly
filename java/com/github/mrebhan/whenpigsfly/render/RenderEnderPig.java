@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
@@ -18,7 +19,8 @@ public class RenderEnderPig extends RenderLiving {
 //    private static final ResourceLocation enderDragonExplodingTextures = new ResourceLocation("textures/entity/enderdragon/dragon_exploding.png");
     private static final ResourceLocation enderDragonCrystalBeamTextures = new ResourceLocation("textures/entity/endercrystal/endercrystal_beam.png");
 //    private static final ResourceLocation enderDragonEyesTextures = new ResourceLocation("textures/entity/enderdragon/dragon_eyes.png");
-    private static final ResourceLocation enderDragonTextures = new ResourceLocation("whenpigsfly:textures/entity/enderpig/TexEnderPig.png");
+    private static final ResourceLocation enderPigTextures = new ResourceLocation("whenpigsfly:textures/entity/enderpig/TexEnderPig.png");
+    private static final ResourceLocation saddledPigTextures = new ResourceLocation("whenpigsfly:textures/entity/enderpig/TexSaddle.png");
     /** An instance of the dragon model in RenderDragon */
     protected ModelEnderPig modelDragon;
 
@@ -56,18 +58,15 @@ public class RenderEnderPig extends RenderLiving {
      */
     protected void renderModel(EntityEnderPig p_77036_1_, float p_77036_2_, float p_77036_3_, float p_77036_4_, float p_77036_5_, float p_77036_6_, float p_77036_7_)
     {
-//        if (p_77036_1_.deathTicks > 0)
-//        {
-//            float f6 = (float)p_77036_1_.deathTicks / 200.0F;
-//            GL11.glDepthFunc(GL11.GL_LEQUAL);
-//            GL11.glEnable(GL11.GL_ALPHA_TEST);
-//            GL11.glAlphaFunc(GL11.GL_GREATER, f6);
-//            this.bindTexture(enderDragonExplodingTextures);
-//            this.mainModel.render(p_77036_1_, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, p_77036_7_);
-//            GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
-//            GL11.glDepthFunc(GL11.GL_EQUAL);
-//        }
-
+    	if (p_77036_1_.getSaddled()) {
+    		this.bindTexture(saddledPigTextures);
+    		GL11.glPushMatrix();
+    		GL11.glScaled(1.1, 1.1, 1.1);
+    		GL11.glTranslated(0, -0.08, 0);
+    		this.mainModel.render(p_77036_1_, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, p_77036_7_);
+    		GL11.glPopMatrix();
+    	}
+    	
         this.bindEntityTexture(p_77036_1_);
         this.mainModel.render(p_77036_1_, p_77036_2_, p_77036_3_, p_77036_4_, p_77036_5_, p_77036_6_, p_77036_7_);
 
@@ -143,7 +142,7 @@ public class RenderEnderPig extends RenderLiving {
      */
     protected ResourceLocation getEntityTexture0(EntityEnderPig p_110775_1_)
     {
-        return enderDragonTextures;
+        return enderPigTextures;
     }
 
     /**

@@ -79,7 +79,7 @@ public class ModelEnderPig extends ModelBase {
 	 * Sets the models various rotation angles then renders the model.
 	 */
 	public void render(Entity p_78088_1_, float p_78088_2_, float p_78088_3_, float p_78088_4_, float p_78088_5_, float p_78088_6_, float p_78088_7_)
-	{
+	{	
 		GL11.glPushMatrix();
 		EntityEnderPig entitydragon = (EntityEnderPig)p_78088_1_;
 		float f6 = entitydragon.prevAnimTime + (entitydragon.animTime - entitydragon.prevAnimTime) * this.partialTicks;

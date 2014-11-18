@@ -7,7 +7,9 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.github.mrebhan.core.helper.EntityHelper;
 import com.github.mrebhan.whenpigsfly.entity.EntityEnderPig;
+import com.github.mrebhan.whenpigsfly.entity.EntityEnderPotion;
 import com.github.mrebhan.whenpigsfly.entity.EntityWeakEnderCrystal;
+import com.github.mrebhan.whenpigsfly.item.ItemEnderPotion;
 import com.github.mrebhan.whenpigsfly.item.ItemWeakEnderCrystal;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -33,9 +35,13 @@ public class WhenPigsFly {
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
+		System.out.println("Initializing...");
+		long millis = System.currentTimeMillis();
 		EntityHelper.registerEntity(EntityEnderPig.class, "EntityEnderPig", this, true);
 		EntityHelper.registerEntity(EntityWeakEnderCrystal.class, "EntityWeakEnderCrystal", this, false);
+		EntityHelper.registerEntity(EntityEnderPotion.class, "EntityEnderPotion", this, false);
 		GameRegistry.registerItem(ItemWeakEnderCrystal.item, "ItemWeakEnderCrystal");
+		GameRegistry.registerItem(ItemEnderPotion.item, "ItemEnderPotion");
 		GameRegistry.addRecipe(new ItemStack(ItemWeakEnderCrystal.item, 4), " s ", "   ", "ccc", 's', new ItemStack(Items.nether_star), 'c', new ItemStack(Blocks.cobblestone));
 		proxy.registerRenderers();
 		MinecraftForge.EVENT_BUS.register(new com.github.mrebhan.whenpigsfly.EventHandler());
@@ -44,5 +50,7 @@ public class WhenPigsFly {
 		Keybindings.instance();
 		this.wrapper.registerMessage(PacketKeys.Handler.class, PacketKeys.class, 0, Side.CLIENT);
 		this.wrapper.registerMessage(PacketKeys.Handler.class, PacketKeys.class, 0, Side.SERVER);
+		long duration = System.currentTimeMillis() - millis;
+		System.out.println("Initialization complete. Time elapsed: " + duration);
 	}
 }

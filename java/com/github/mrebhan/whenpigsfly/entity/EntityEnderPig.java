@@ -199,6 +199,10 @@ public class EntityEnderPig extends EntityCreature {
 				this.motionZ += Math.cos((double)(f * (float)Math.PI / 180.0F)) * thePlayer.moveForward * 0.1;
 				if (fly)
 					this.motionY = this.playerascend ? 0.3 : (this.playerdescend ? -0.3 : 0);
+				if (this.isInAir() &! fly) {
+					this.motionX *= 0.7;
+					this.motionZ *= 0.7;
+				}
 			} else {
 				this.playerascend = this.playerdescend = this.fly = false;
 			}
