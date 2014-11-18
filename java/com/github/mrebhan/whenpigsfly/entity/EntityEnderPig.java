@@ -3,27 +3,14 @@ package com.github.mrebhan.whenpigsfly.entity;
 import java.util.Iterator;
 import java.util.List;
 
-import org.lwjgl.input.Mouse;
-
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EntityFlying;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.IEntityMultiPart;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.boss.EntityDragonPart;
 import net.minecraft.entity.item.EntityEnderCrystal;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityGhast;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityBat;
-import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
@@ -150,7 +137,7 @@ public class EntityEnderPig extends EntityCreature {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		this.stepHeight = 1;
-		if (this.motionY < -0.1 && !fly) {
+		if (this.motionY < -0.1 && this.isInAir()) {
 			this.motionY = -0.1;
 		}
 		float f;
@@ -389,7 +376,7 @@ public class EntityEnderPig extends EntityCreature {
 	}
 
 	public boolean isInAir() {
-		return !this.onGround && !this.isInWater();
+		return !this.onGround && !this.isInWater() && fly;
 	}
 
 }
