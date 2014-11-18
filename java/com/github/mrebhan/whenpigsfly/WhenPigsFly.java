@@ -1,5 +1,8 @@
 package com.github.mrebhan.whenpigsfly;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.github.mrebhan.core.helper.EntityHelper;
@@ -33,6 +36,7 @@ public class WhenPigsFly {
 		EntityHelper.registerEntity(EntityEnderPig.class, "EntityEnderPig", this, true);
 		EntityHelper.registerEntity(EntityWeakEnderCrystal.class, "EntityWeakEnderCrystal", this, false);
 		GameRegistry.registerItem(ItemWeakEnderCrystal.item, "ItemWeakEnderCrystal");
+		GameRegistry.addRecipe(new ItemStack(ItemWeakEnderCrystal.item, 4), " s ", "   ", "ccc", 's', new ItemStack(Items.nether_star), 'c', new ItemStack(Blocks.cobblestone));
 		proxy.registerRenderers();
 		MinecraftForge.EVENT_BUS.register(new com.github.mrebhan.whenpigsfly.EventHandler());
 		FMLCommonHandler.instance().bus().register(new com.github.mrebhan.whenpigsfly.EventHandler());

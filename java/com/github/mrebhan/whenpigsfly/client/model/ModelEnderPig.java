@@ -196,10 +196,18 @@ public class ModelEnderPig extends ModelBase {
 		this.head.rotateAngleX = p_78087_5_ / (180F / (float)Math.PI);
 		this.head.rotateAngleY = p_78087_4_ / (180F / (float)Math.PI);
 		this.body.rotateAngleX = ((float)Math.PI / 2F);
-		this.leg1.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F) * 1.4F * p_78087_2_;
-		this.leg2.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F + (float)Math.PI) * 1.4F * p_78087_2_;
-		this.leg3.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F + (float)Math.PI) * 1.4F * p_78087_2_;
-		this.leg4.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F) * 1.4F * p_78087_2_;
+		EntityEnderPig enderPig = (EntityEnderPig) p_78087_7_;
+		if (enderPig.isInAir()) {
+			this.leg1.rotateAngleX = 45;
+			this.leg2.rotateAngleX = 45;
+			this.leg3.rotateAngleX = 45;
+			this.leg4.rotateAngleX = 45;
+		} else {
+			this.leg1.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F) * 1.4F * p_78087_2_;
+			this.leg2.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F + (float)Math.PI) * 1.4F * p_78087_2_;
+			this.leg3.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F + (float)Math.PI) * 1.4F * p_78087_2_;
+			this.leg4.rotateAngleX = MathHelper.cos(p_78087_1_ * 0.6662F) * 1.4F * p_78087_2_;
+		}
 	}
 
 }

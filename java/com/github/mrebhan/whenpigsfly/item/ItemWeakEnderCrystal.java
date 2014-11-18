@@ -23,9 +23,9 @@ public class ItemWeakEnderCrystal extends Item {
 	{
 		if (!p_77648_3_.isRemote) {
 			EntityWeakEnderCrystal enderCrystal = new EntityWeakEnderCrystal(p_77648_3_);
-			enderCrystal.posX = p_77648_4_;
+			enderCrystal.posX = p_77648_4_ + .5;
 			enderCrystal.posY = p_77648_5_ + 1;
-			enderCrystal.posZ = p_77648_6_;
+			enderCrystal.posZ = p_77648_6_ + .5;
 			p_77648_3_.spawnEntityInWorld(enderCrystal);
 			p_77648_1_.stackSize--;
 		}

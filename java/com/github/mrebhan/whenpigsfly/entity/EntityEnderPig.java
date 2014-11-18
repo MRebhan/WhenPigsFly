@@ -376,7 +376,7 @@ public class EntityEnderPig extends EntityCreature {
 	}
 
 	public boolean isInAir() {
-		return !this.onGround && !this.isInWater() && fly;
+		return !this.onGround && !this.isInWater();
 	}
 
 }

@@ -125,7 +125,7 @@ public class RenderEnderPig extends RenderLiving {
                 float f12 = MathHelper.cos((float)(i % b0) * (float)Math.PI * 2.0F / (float)b0) * 0.75F;
                 float f13 = (float)(i % b0) * 1.0F / (float)b0;
                 tessellator.setColorOpaque_I(0);
-                tessellator.addVertexWithUV((double)(f11 * 0.2F), (double)(f12 * 0.2F), 0.0D, (double)f13, (double)f10);
+                tessellator.addVertexWithUV((double)(f11 * 0.2F), (double)(f12 * 0.2F) + 1.5, 0.0D, (double)f13, (double)f10);
                 tessellator.setColorOpaque_I(16777215);
                 tessellator.addVertexWithUV((double)f11, (double)f12, (double)f8, (double)f13, (double)f9);
             }
